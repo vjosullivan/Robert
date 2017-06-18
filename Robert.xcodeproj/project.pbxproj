@@ -18,6 +18,11 @@
 		F1233F471EF66B9D00FC2E48 /* SuitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233F461EF66B9D00FC2E48 /* SuitTests.swift */; };
 		F1233F491EF66D4700FC2E48 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233F481EF66D4700FC2E48 /* Card.swift */; };
 		F1233F4B1EF66D7B00FC2E48 /* CardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233F4A1EF66D7B00FC2E48 /* CardTests.swift */; };
+		F1233F4D1EF672BC00FC2E48 /* Robert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233F4C1EF672BC00FC2E48 /* Robert.swift */; };
+		F1233F4F1EF672D600FC2E48 /* RobertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233F4E1EF672D600FC2E48 /* RobertTests.swift */; };
+		F1233F511EF6735100FC2E48 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233F501EF6735100FC2E48 /* Deck.swift */; };
+		F1233F571EF6755F00FC2E48 /* DeckSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233F561EF6755F00FC2E48 /* DeckSize.swift */; };
+		F1233F591EF6774500FC2E48 /* DeckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233F581EF6774500FC2E48 /* DeckTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +51,11 @@
 		F1233F461EF66B9D00FC2E48 /* SuitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuitTests.swift; sourceTree = "<group>"; };
 		F1233F481EF66D4700FC2E48 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		F1233F4A1EF66D7B00FC2E48 /* CardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTests.swift; sourceTree = "<group>"; };
+		F1233F4C1EF672BC00FC2E48 /* Robert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Robert.swift; sourceTree = "<group>"; };
+		F1233F4E1EF672D600FC2E48 /* RobertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobertTests.swift; sourceTree = "<group>"; };
+		F1233F501EF6735100FC2E48 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
+		F1233F561EF6755F00FC2E48 /* DeckSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckSize.swift; sourceTree = "<group>"; };
+		F1233F581EF6774500FC2E48 /* DeckTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +123,9 @@
 				F1233F3F1EF660BA00FC2E48 /* Rank.swift */,
 				F1233F441EF66B2600FC2E48 /* Suit.swift */,
 				F1233F481EF66D4700FC2E48 /* Card.swift */,
+				F1233F4C1EF672BC00FC2E48 /* Robert.swift */,
+				F1233F501EF6735100FC2E48 /* Deck.swift */,
+				F1233F561EF6755F00FC2E48 /* DeckSize.swift */,
 			);
 			name = model;
 			path = model/model;
@@ -124,6 +137,8 @@
 				F1233F421EF661BE00FC2E48 /* RankTests.swift */,
 				F1233F461EF66B9D00FC2E48 /* SuitTests.swift */,
 				F1233F4A1EF66D7B00FC2E48 /* CardTests.swift */,
+				F1233F4E1EF672D600FC2E48 /* RobertTests.swift */,
+				F1233F581EF6774500FC2E48 /* DeckTests.swift */,
 			);
 			name = model;
 			path = model/model;
@@ -230,11 +245,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1233F511EF6735100FC2E48 /* Deck.swift in Sources */,
 				F1233F211EF65F0600FC2E48 /* ViewController.swift in Sources */,
 				F1233F1F1EF65F0600FC2E48 /* AppDelegate.swift in Sources */,
+				F1233F571EF6755F00FC2E48 /* DeckSize.swift in Sources */,
 				F1233F491EF66D4700FC2E48 /* Card.swift in Sources */,
 				F1233F451EF66B2700FC2E48 /* Suit.swift in Sources */,
 				F1233F401EF660BA00FC2E48 /* Rank.swift in Sources */,
+				F1233F4D1EF672BC00FC2E48 /* Robert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,7 +260,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1233F591EF6774500FC2E48 /* DeckTests.swift in Sources */,
 				F1233F4B1EF66D7B00FC2E48 /* CardTests.swift in Sources */,
+				F1233F4F1EF672D600FC2E48 /* RobertTests.swift in Sources */,
 				F1233F471EF66B9D00FC2E48 /* SuitTests.swift in Sources */,
 				F1233F431EF661BE00FC2E48 /* RankTests.swift in Sources */,
 			);
