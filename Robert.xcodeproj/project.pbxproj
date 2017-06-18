@@ -14,6 +14,10 @@
 		F1233F291EF65F0600FC2E48 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1233F271EF65F0600FC2E48 /* LaunchScreen.storyboard */; };
 		F1233F401EF660BA00FC2E48 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233F3F1EF660BA00FC2E48 /* Rank.swift */; };
 		F1233F431EF661BE00FC2E48 /* RankTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233F421EF661BE00FC2E48 /* RankTests.swift */; };
+		F1233F451EF66B2700FC2E48 /* Suit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233F441EF66B2600FC2E48 /* Suit.swift */; };
+		F1233F471EF66B9D00FC2E48 /* SuitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233F461EF66B9D00FC2E48 /* SuitTests.swift */; };
+		F1233F491EF66D4700FC2E48 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233F481EF66D4700FC2E48 /* Card.swift */; };
+		F1233F4B1EF66D7B00FC2E48 /* CardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233F4A1EF66D7B00FC2E48 /* CardTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +42,10 @@
 		F1233F351EF65F0600FC2E48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1233F3F1EF660BA00FC2E48 /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
 		F1233F421EF661BE00FC2E48 /* RankTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankTests.swift; sourceTree = "<group>"; };
+		F1233F441EF66B2600FC2E48 /* Suit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suit.swift; sourceTree = "<group>"; };
+		F1233F461EF66B9D00FC2E48 /* SuitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuitTests.swift; sourceTree = "<group>"; };
+		F1233F481EF66D4700FC2E48 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		F1233F4A1EF66D7B00FC2E48 /* CardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +111,8 @@
 			isa = PBXGroup;
 			children = (
 				F1233F3F1EF660BA00FC2E48 /* Rank.swift */,
+				F1233F441EF66B2600FC2E48 /* Suit.swift */,
+				F1233F481EF66D4700FC2E48 /* Card.swift */,
 			);
 			name = model;
 			path = model/model;
@@ -112,6 +122,8 @@
 			isa = PBXGroup;
 			children = (
 				F1233F421EF661BE00FC2E48 /* RankTests.swift */,
+				F1233F461EF66B9D00FC2E48 /* SuitTests.swift */,
+				F1233F4A1EF66D7B00FC2E48 /* CardTests.swift */,
 			);
 			name = model;
 			path = model/model;
@@ -220,6 +232,8 @@
 			files = (
 				F1233F211EF65F0600FC2E48 /* ViewController.swift in Sources */,
 				F1233F1F1EF65F0600FC2E48 /* AppDelegate.swift in Sources */,
+				F1233F491EF66D4700FC2E48 /* Card.swift in Sources */,
+				F1233F451EF66B2700FC2E48 /* Suit.swift in Sources */,
 				F1233F401EF660BA00FC2E48 /* Rank.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -228,6 +242,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1233F4B1EF66D7B00FC2E48 /* CardTests.swift in Sources */,
+				F1233F471EF66B9D00FC2E48 /* SuitTests.swift in Sources */,
 				F1233F431EF661BE00FC2E48 /* RankTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -444,6 +460,7 @@
 				F1233F3A1EF65F0600FC2E48 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F1233F3B1EF65F0600FC2E48 /* Build configuration list for PBXNativeTarget "RobertTests" */ = {
 			isa = XCConfigurationList;
@@ -452,6 +469,7 @@
 				F1233F3D1EF65F0600FC2E48 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
