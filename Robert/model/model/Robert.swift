@@ -66,6 +66,7 @@ class Robert {
         switch selectedDeck {
         case .stock:
             moveStockToWaste()
+            selectedDeck = .none
         case .waste:
             selectedDeck = .none
         case .none:
