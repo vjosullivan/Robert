@@ -24,6 +24,9 @@ enum Rank: Int {
     case queen
     case king
 
+    /// A closed `Range` that spans all ranks.
+    private static let all = ace.rawValue...king.rawValue
+
     /// An ordered, iterable array of all `Rank`s.
     public static let allRanks: [Rank] = {
         let allRawValues = Rank.ace.rawValue...Rank.king.rawValue

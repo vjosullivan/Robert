@@ -17,7 +17,6 @@ class RankTests: XCTestCase {
     }
 
     func testRankOrder() {
-        XCTAssertEqual(Rank.seven, Rank.allRanks[6])
-        XCTAssertEqual(5, Rank.five.rawValue)
+        XCTAssertEqual(Rank.seven, Rank(rawValue: Rank.six.rawValue + 1))
     }
 }
