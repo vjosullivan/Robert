@@ -12,7 +12,8 @@
 		F1233F241EF65F0600FC2E48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1233F221EF65F0600FC2E48 /* Main.storyboard */; };
 		F1233F261EF65F0600FC2E48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1233F251EF65F0600FC2E48 /* Assets.xcassets */; };
 		F1233F291EF65F0600FC2E48 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1233F271EF65F0600FC2E48 /* LaunchScreen.storyboard */; };
-		F1233F341EF65F0600FC2E48 /* RobertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233F331EF65F0600FC2E48 /* RobertTests.swift */; };
+		F1233F401EF660BA00FC2E48 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233F3F1EF660BA00FC2E48 /* Rank.swift */; };
+		F1233F431EF661BE00FC2E48 /* RankTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233F421EF661BE00FC2E48 /* RankTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,8 +35,9 @@
 		F1233F281EF65F0600FC2E48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F1233F2A1EF65F0600FC2E48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1233F2F1EF65F0600FC2E48 /* RobertTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RobertTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F1233F331EF65F0600FC2E48 /* RobertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobertTests.swift; sourceTree = "<group>"; };
 		F1233F351EF65F0600FC2E48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1233F3F1EF660BA00FC2E48 /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
+		F1233F421EF661BE00FC2E48 /* RankTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		F1233F1D1EF65F0600FC2E48 /* Robert */ = {
 			isa = PBXGroup;
 			children = (
+				F1233F3E1EF6608B00FC2E48 /* model */,
 				F1233F1E1EF65F0600FC2E48 /* AppDelegate.swift */,
 				F1233F201EF65F0600FC2E48 /* ViewController.swift */,
 				F1233F221EF65F0600FC2E48 /* Main.storyboard */,
@@ -90,10 +93,28 @@
 		F1233F321EF65F0600FC2E48 /* RobertTests */ = {
 			isa = PBXGroup;
 			children = (
-				F1233F331EF65F0600FC2E48 /* RobertTests.swift */,
+				F1233F411EF6618D00FC2E48 /* model */,
 				F1233F351EF65F0600FC2E48 /* Info.plist */,
 			);
 			path = RobertTests;
+			sourceTree = "<group>";
+		};
+		F1233F3E1EF6608B00FC2E48 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				F1233F3F1EF660BA00FC2E48 /* Rank.swift */,
+			);
+			name = model;
+			path = model/model;
+			sourceTree = "<group>";
+		};
+		F1233F411EF6618D00FC2E48 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				F1233F421EF661BE00FC2E48 /* RankTests.swift */,
+			);
+			name = model;
+			path = model/model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +220,7 @@
 			files = (
 				F1233F211EF65F0600FC2E48 /* ViewController.swift in Sources */,
 				F1233F1F1EF65F0600FC2E48 /* AppDelegate.swift in Sources */,
+				F1233F401EF660BA00FC2E48 /* Rank.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,7 +228,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1233F341EF65F0600FC2E48 /* RobertTests.swift in Sources */,
+				F1233F431EF661BE00FC2E48 /* RankTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
