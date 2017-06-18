@@ -20,7 +20,7 @@ enum Suit: Int {
     private static let all = clubs.rawValue...spades.rawValue
 
     /// An iterable array of all suits.
-    public static let allSuits = Array(allRawValues.map{ Suit(rawValue: $0)! })
+    public static let allSuits = Array(all.map{ Suit(rawValue: $0)! })
 }
 
 extension Suit: CustomStringConvertible {
