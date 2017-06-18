@@ -16,6 +16,14 @@ class Robert {
     public private(set) var suite: Deck = Deck(.empty)
     public private(set) var waste: Deck = Deck(.empty)
 
+    public var delegate: RobertDelegate?
+
+    private var selectedDeck = RobertDeck.none {
+        didSet {
+            delegate?.didSelect(selectedDeck)
+        }
+    }
+
     // MARK: - Public functions.
 
     init() {
@@ -27,8 +35,64 @@ class Robert {
         suite = Deck(.empty)
         waste = Deck(.empty)
 
-        suite.addToTop(stock.removeTopCard())
+        moveStockToSuite()
+        selectedDeck = .none
+        delegate?.didStartNewGame()
+    }
+
+    public func selectStock() {
+        switch selectedDeck {
+        case .stock:
+            selectedDeck = .none
+        case .waste, .none:
+            selectedDeck = .stock
+        }
+    }
+
+    public func selectSuite() {
+        switch  selectedDeck {
+        case .stock:
+            moveStockToSuite()
+            selectedDeck = .none
+        case .waste:
+            moveWasteToSuite()
+            selectedDeck = .none
+        case .none:
+            break
+        }
+    }
+
+    public func selectWaste() {
+        switch selectedDeck {
+        case .stock:
+            moveStockToWaste()
+        case .waste:
+            selectedDeck = .none
+        case .none:
+            selectedDeck = .waste
+        }
     }
 
     // MARK: - Private functions.
+
+    private func moveStockToSuite() {
+        guard stock.cardCount > 0 else {
+            return
+        }
+        suite.addToTop(stock.removeTopCard())
+    }
+
+    private func moveStockToWaste() {
+        guard stock.cardCount > 0 else {
+            return
+        }
+        waste.addToTop(stock.removeTopCard())
+    }
+
+    private func moveWasteToSuite() {
+        guard waste.cardCount > 0 else {
+            return
+        }
+        suite.addToTop(waste.removeTopCard())
+    }
 }
