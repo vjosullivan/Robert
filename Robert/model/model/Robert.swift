@@ -10,19 +10,13 @@ import Foundation
 
 class Robert {
 
-    // MARK: - Game state.
+    // MARK: - Public constants and properties.
 
     public private(set) var stock: Deck = Deck(.empty)
     public private(set) var suite: Deck = Deck(.empty)
     public private(set) var waste: Deck = Deck(.empty)
 
     public var delegate: RobertDelegate?
-
-    private var selectedDeck = RobertDeck.none {
-        didSet {
-            delegate?.didSelect(selectedDeck)
-        }
-    }
 
     // MARK: - Public functions.
 
@@ -35,8 +29,7 @@ class Robert {
         suite = Deck(.empty)
         waste = Deck(.empty)
 
-        moveStockToSuite()
-        selectedDeck = .none
+        suite.addToTop(stock.removeTopCard())
         delegate?.didStartNewGame()
     }
 
@@ -44,7 +37,9 @@ class Robert {
         switch selectedDeck {
         case .stock:
             selectedDeck = .none
-        case .waste, .none:
+        case .waste:
+            selectedDeck = .none
+        case .none:
             selectedDeck = .stock
         }
     }
@@ -52,11 +47,9 @@ class Robert {
     public func selectSuite() {
         switch  selectedDeck {
         case .stock:
-            moveStockToSuite()
-            selectedDeck = .none
+            moveCard(from: &stock, to: &suite)
         case .waste:
-            moveWasteToSuite()
-            selectedDeck = .none
+            moveCard(from: &waste, to: &suite)
         case .none:
             break
         }
@@ -65,8 +58,7 @@ class Robert {
     public func selectWaste() {
         switch selectedDeck {
         case .stock:
-            moveStockToWaste()
-            selectedDeck = .none
+            moveCard(from: &stock, to: &waste)
         case .waste:
             selectedDeck = .none
         case .none:
@@ -74,26 +66,25 @@ class Robert {
         }
     }
 
+    // MARK: - Private constants and properties
+
+    private var selectedDeck = RobertDeck.none {
+        didSet {
+            delegate?.didSelect(selectedDeck)
+        }
+    }
+
     // MARK: - Private functions.
 
-    private func moveStockToSuite() {
-        guard stock.cardCount > 0 else {
+    private func moveCard(from source: inout Deck, to destination: inout Deck) {
+        selectedDeck = .none
+        guard source.cardCount > 0 else {
             return
         }
-        suite.addToTop(stock.removeTopCard())
-    }
-
-    private func moveStockToWaste() {
-        guard stock.cardCount > 0 else {
+        if destination === suite  &&
+            source.topCard.rankDifference(to: destination.topCard) != 1 {
             return
         }
-        waste.addToTop(stock.removeTopCard())
-    }
-
-    private func moveWasteToSuite() {
-        guard waste.cardCount > 0 else {
-            return
-        }
-        suite.addToTop(waste.removeTopCard())
+        destination.addToTop(source.removeTopCard())
     }
 }

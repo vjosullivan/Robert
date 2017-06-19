@@ -44,6 +44,13 @@ class RobertTests: XCTestCase {
         XCTAssertEqual(2, dummyDelegate?.changeCount)
     }
 
+    func testSelectStockAfterWasteSelectsNone() {
+        robert?.selectWaste()
+        XCTAssertEqual(RobertDeck.waste, dummyDelegate?.selectedDeck)
+        robert?.selectStock()
+        XCTAssertEqual(RobertDeck.none, dummyDelegate?.selectedDeck)
+    }
+
     func testSelectSuiteFromNoneDoesNothing() {
         XCTAssertEqual(RobertDeck.none, dummyDelegate?.selectedDeck)
         XCTAssertEqual(0, dummyDelegate?.changeCount)

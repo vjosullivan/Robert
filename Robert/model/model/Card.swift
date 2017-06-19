@@ -20,6 +20,12 @@ struct Card {
     public func differenceInRank(to other: Card) -> Int {
         return abs(self.rank.rawValue - other.rank.rawValue)
     }
+
+
+    /// - Note: Returns the absolute difference in rank between this and another `Card`.
+    public func rankDifference(to other: Card) -> Int {
+        return abs(self.rank.rawValue - other.rank.rawValue)
+    }
 }
 
 extension Card: CustomStringConvertible {
