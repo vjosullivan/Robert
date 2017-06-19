@@ -24,7 +24,6 @@
 		F1233F571EF6755F00FC2E48 /* DeckSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233F561EF6755F00FC2E48 /* DeckSize.swift */; };
 		F1233F591EF6774500FC2E48 /* DeckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233F581EF6774500FC2E48 /* DeckTests.swift */; };
 		F1233F5B1EF6987200FC2E48 /* RobertDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233F5A1EF6987200FC2E48 /* RobertDelegate.swift */; };
-		F1233F5D1EF6994800FC2E48 /* RobertDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233F5C1EF6994800FC2E48 /* RobertDeck.swift */; };
 		F1233F5F1EF6B55200FC2E48 /* DummyRobertDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233F5E1EF6B55200FC2E48 /* DummyRobertDelegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,7 +59,6 @@
 		F1233F561EF6755F00FC2E48 /* DeckSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckSize.swift; sourceTree = "<group>"; };
 		F1233F581EF6774500FC2E48 /* DeckTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckTests.swift; sourceTree = "<group>"; };
 		F1233F5A1EF6987200FC2E48 /* RobertDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobertDelegate.swift; sourceTree = "<group>"; };
-		F1233F5C1EF6994800FC2E48 /* RobertDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobertDeck.swift; sourceTree = "<group>"; };
 		F1233F5E1EF6B55200FC2E48 /* DummyRobertDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyRobertDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,7 +131,6 @@
 				F1233F561EF6755F00FC2E48 /* DeckSize.swift */,
 				F1233F4C1EF672BC00FC2E48 /* Robert.swift */,
 				F1233F5A1EF6987200FC2E48 /* RobertDelegate.swift */,
-				F1233F5C1EF6994800FC2E48 /* RobertDeck.swift */,
 			);
 			name = model;
 			path = model/model;
@@ -255,7 +252,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1233F511EF6735100FC2E48 /* Deck.swift in Sources */,
-				F1233F5D1EF6994800FC2E48 /* RobertDeck.swift in Sources */,
 				F1233F5B1EF6987200FC2E48 /* RobertDelegate.swift in Sources */,
 				F1233F211EF65F0600FC2E48 /* ViewController.swift in Sources */,
 				F1233F1F1EF65F0600FC2E48 /* AppDelegate.swift in Sources */,

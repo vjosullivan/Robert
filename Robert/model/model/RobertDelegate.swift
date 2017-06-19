@@ -12,5 +12,7 @@ protocol RobertDelegate {
 
     func didStartNewGame()
 
-    func didSelect(_ deck: RobertDeck)
+    func didSelect(_ deck: Robert.ActiveDeck)
+
+    func didChangeState(to gameState: Robert.GameState)
 }

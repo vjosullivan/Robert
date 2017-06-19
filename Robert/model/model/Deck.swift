@@ -19,6 +19,14 @@ class Deck {
         return deck.count
     }
 
+    public var isEmpty: Bool {
+        return deck.count == 0
+    }
+
+    public var containsCards: Bool {
+        return !isEmpty
+    }
+
     private var deck = [Card]()
 
     // MARK: - Public functions.

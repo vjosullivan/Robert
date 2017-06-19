@@ -33,71 +33,71 @@ class RobertTests: XCTestCase {
     }
 
     func testSelectStockInformsDelegate() {
-        XCTAssertEqual(RobertDeck.none, dummyDelegate?.selectedDeck)
+        XCTAssertEqual(Robert.ActiveDeck.none, dummyDelegate?.activeDeck)
         XCTAssertEqual(0, dummyDelegate?.changeCount)
         robert?.selectStock()
         XCTAssertEqual(1, dummyDelegate?.changeCount)
-        XCTAssertEqual(RobertDeck.stock, dummyDelegate?.selectedDeck)
+        XCTAssertEqual(Robert.ActiveDeck.stock, dummyDelegate?.activeDeck)
         // Selecting stock twice deselects it.
         robert?.selectStock()
-        XCTAssertEqual(RobertDeck.none, dummyDelegate?.selectedDeck)
+        XCTAssertEqual(Robert.ActiveDeck.none, dummyDelegate?.activeDeck)
         XCTAssertEqual(2, dummyDelegate?.changeCount)
     }
 
     func testSelectStockAfterWasteSelectsNone() {
         robert?.selectWaste()
-        XCTAssertEqual(RobertDeck.waste, dummyDelegate?.selectedDeck)
+        XCTAssertEqual(Robert.ActiveDeck.waste, dummyDelegate?.activeDeck)
         robert?.selectStock()
-        XCTAssertEqual(RobertDeck.none, dummyDelegate?.selectedDeck)
+        XCTAssertEqual(Robert.ActiveDeck.none, dummyDelegate?.activeDeck)
     }
 
     func testSelectSuiteFromNoneDoesNothing() {
-        XCTAssertEqual(RobertDeck.none, dummyDelegate?.selectedDeck)
+        XCTAssertEqual(Robert.ActiveDeck.none, dummyDelegate?.activeDeck)
         XCTAssertEqual(0, dummyDelegate?.changeCount)
         robert?.selectSuite()
-        XCTAssertEqual(RobertDeck.none, dummyDelegate?.selectedDeck)
+        XCTAssertEqual(Robert.ActiveDeck.none, dummyDelegate?.activeDeck)
         XCTAssertEqual(0, dummyDelegate?.changeCount)
     }
 
     func testSelectSuiteAfterStockInformsDelegate() {
-        XCTAssertEqual(RobertDeck.none, dummyDelegate?.selectedDeck)
+        XCTAssertEqual(Robert.ActiveDeck.none, dummyDelegate?.activeDeck)
         XCTAssertEqual(0, dummyDelegate?.changeCount)
         robert?.selectStock()
         XCTAssertEqual(1, dummyDelegate?.changeCount)
-        XCTAssertEqual(RobertDeck.stock, dummyDelegate?.selectedDeck)
+        XCTAssertEqual(Robert.ActiveDeck.stock, dummyDelegate?.activeDeck)
         robert?.selectSuite()
-        XCTAssertEqual(RobertDeck.none, dummyDelegate?.selectedDeck)
+        XCTAssertEqual(Robert.ActiveDeck.none, dummyDelegate?.activeDeck)
         XCTAssertEqual(2, dummyDelegate?.changeCount)
     }
 
     func testSelectSuiteAfterWasteInformsDelegate() {
-        XCTAssertEqual(RobertDeck.none, dummyDelegate?.selectedDeck)
+        XCTAssertEqual(Robert.ActiveDeck.none, dummyDelegate?.activeDeck)
         XCTAssertEqual(0, dummyDelegate?.changeCount)
         robert?.selectWaste()
         XCTAssertEqual(1, dummyDelegate?.changeCount)
-        XCTAssertEqual(RobertDeck.waste, dummyDelegate?.selectedDeck)
+        XCTAssertEqual(Robert.ActiveDeck.waste, dummyDelegate?.activeDeck)
         robert?.selectSuite()
-        XCTAssertEqual(RobertDeck.none, dummyDelegate?.selectedDeck)
+        XCTAssertEqual(Robert.ActiveDeck.none, dummyDelegate?.activeDeck)
         XCTAssertEqual(2, dummyDelegate?.changeCount)
     }
 
     func testSelectWasteInformsDelegate() {
-        XCTAssertEqual(RobertDeck.none, dummyDelegate?.selectedDeck)
+        XCTAssertEqual(Robert.ActiveDeck.none, dummyDelegate?.activeDeck)
         robert?.selectWaste()
-        XCTAssertEqual(RobertDeck.waste, dummyDelegate?.selectedDeck)
+        XCTAssertEqual(Robert.ActiveDeck.waste, dummyDelegate?.activeDeck)
         // Selecting waste twice deselects it.
         robert?.selectWaste()
-        XCTAssertEqual(RobertDeck.none, dummyDelegate?.selectedDeck)
+        XCTAssertEqual(Robert.ActiveDeck.none, dummyDelegate?.activeDeck)
     }
 
     func testSelectWasteAfterStockInformsDelegate() {
-        XCTAssertEqual(RobertDeck.none, dummyDelegate?.selectedDeck)
+        XCTAssertEqual(Robert.ActiveDeck.none, dummyDelegate?.activeDeck)
         XCTAssertEqual(0, dummyDelegate?.changeCount)
         robert?.selectStock()
         XCTAssertEqual(1, dummyDelegate?.changeCount)
-        XCTAssertEqual(RobertDeck.stock, dummyDelegate?.selectedDeck)
+        XCTAssertEqual(Robert.ActiveDeck.stock, dummyDelegate?.activeDeck)
         robert?.selectWaste()
-        XCTAssertEqual(RobertDeck.none, dummyDelegate?.selectedDeck)
+        XCTAssertEqual(Robert.ActiveDeck.none, dummyDelegate?.activeDeck)
         XCTAssertEqual(2, dummyDelegate?.changeCount)
     }
 }

@@ -10,8 +10,7 @@ import Foundation
 @testable import Robert
 
 class DummyRobertDelegate: RobertDelegate {
-
-    public private(set) var selectedDeck = RobertDeck.none
+    public private(set) var activeDeck = Robert.ActiveDeck.none
     public private(set) var changeCount = 0
     public private(set) var gameCount = 0
 
@@ -19,8 +18,12 @@ class DummyRobertDelegate: RobertDelegate {
         gameCount += 1
     }
 
-    func didSelect(_ deck: RobertDeck) {
-        selectedDeck = deck
+    func didSelect(_ deck: Robert.ActiveDeck) {
+        activeDeck = deck
         changeCount += 1
+    }
+
+    func didChangeState(to gameState: Robert.GameState) {
+        // TODO:
     }
 }
