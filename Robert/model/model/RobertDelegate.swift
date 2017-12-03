@@ -25,4 +25,8 @@ protocol RobertDelegate {
     /// - Parameter gameState: The new game state.
     ///
     func didChangeState(to gameState: Robert.GameState)
+
+    /// Called whenever the game moves cards.
+    ///
+    func didMoveCards()
 }

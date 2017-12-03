@@ -13,6 +13,10 @@ struct Card {
     let rank: Rank
     let suit: Suit
 
+    var imageName: String {
+        return "\(rank.description)_of_\(suit.description)".localizedLowercase
+    }
+
     /// - Note: This is always a positive number regardless of whether
     ///         this or the other card has the higher rank.
     /// - Parameter other: The card to be compared to this Card.

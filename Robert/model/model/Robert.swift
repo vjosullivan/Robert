@@ -20,6 +20,34 @@ class Robert {
     public var suiteEnabled: Bool { return suite.cardCount > 0 }
     public var wasteEnabled: Bool { return waste.cardCount > 0 }
 
+    public var stockImageName: String {
+        if let card = stock.topCard {
+            return card.imageName
+        } else {
+            if gameState == .firstDealPlayedOut {
+                return "zone_circle"
+            } else {
+                return "zone_cross"
+            }
+        }
+    }
+
+    public var suiteImageName: String {
+        if let card = suite.topCard {
+            return card.imageName
+        } else {
+            return "zone"
+        }
+    }
+
+    public var wasteImageName: String {
+        if let card = waste.topCard {
+            return card.imageName
+        } else {
+            return "zone"
+        }
+    }
+
     public var delegate: RobertDelegate?
 
     public enum GameState {
@@ -51,6 +79,7 @@ class Robert {
 
         suite.addToTop(stock.removeTopCard())
         delegate?.didStartNewGame()
+        delegate?.didMoveCards()
     }
 
     public func selectStock() {
@@ -112,12 +141,16 @@ class Robert {
         guard source.cardCount > 0 else {
             return
         }
-        if destination === suite  &&
-            source.topCard.rankDifference(to: destination.topCard) != 1 {
-            return
+        if destination === suite {
+            // Both source and suite must/will contain cards hence "!" marks are OK.
+            if source.topCard!.rankDifference(to: destination.topCard!) != 1 {
+                return
+            }
         }
         destination.addToTop(source.removeTopCard())
         updateGameState()
+        delegate?.didMoveCards()
+        print(stock.cardCount, suite.cardCount, waste.cardCount)
     }
 
     private func updateGameState() {
@@ -135,10 +168,14 @@ class Robert {
         default:
             break
         }
+        delegate?.didChangeState(to: gameState)
     }
 
     private func topWasteCardIsPlayable() -> Bool {
-        return waste.containsCards && waste.topCard.differenceInRank(to: suite.topCard) == 1
+        guard let wasteCard = waste.topCard else {
+            return false
+        }
+        return wasteCard.differenceInRank(to: suite.topCard!) == 1
     }
 
     private func redeal() {
@@ -148,6 +185,8 @@ class Robert {
         stock = waste
         waste = Deck(.empty)
         gameState = .secondDeal
+        delegate?.didChangeState(to: gameState)
+        delegate?.didMoveCards()
     }
 }
 

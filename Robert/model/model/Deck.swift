@@ -61,11 +61,11 @@ class Deck {
     ///
     /// - Parameter card: The card to be added.
     public func addToTop(_ card: Card) {
-        deck.append(card)
+        deck.insert(card, at: 0)
     }
 
-    public var topCard: Card {
-        return deck.first!
+    public var topCard: Card? {
+        return deck.first
     }
 
     // MARK: - Private functions.

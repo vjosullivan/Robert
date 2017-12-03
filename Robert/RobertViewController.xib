@@ -1,25 +1,116 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RobertViewController" customModule="Robert" customModuleProvider="target">
             <connections>
+                <outlet property="activeStock" destination="XPp-7T-ji8" id="pcM-8l-ssa"/>
+                <outlet property="activeSuite" destination="v4n-cq-htZ" id="VhR-RF-90S"/>
+                <outlet property="activeWaste" destination="car-ua-kg5" id="rkV-Pq-vyO"/>
+                <outlet property="gameState" destination="Kpd-pB-svC" id="nmb-97-A9J"/>
+                <outlet property="stock" destination="i3R-7c-H6Q" id="pSH-yf-QL8"/>
+                <outlet property="suite" destination="zkM-hH-Bdh" id="uOq-gQ-Cap"/>
                 <outlet property="view" destination="iN0-l3-epB" id="T0n-aU-Sll"/>
+                <outlet property="waste" destination="7L5-AH-n0a" id="xwd-nv-uZu"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" placeholderIntrinsicWidth="0.0" placeholderIntrinsicHeight="0.0" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="6m2-oM-JOP" userLabel="Outer stack">
+                    <rect key="frame" x="0.0" y="44" width="375" height="516.66666666666663"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game State" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kpd-pB-svC" userLabel="Game state">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="167"/>
+                            <color key="backgroundColor" red="0.97513862724842004" green="0.49803921568627452" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                            <color key="textColor" red="0.92490960739999994" green="1" blue="0.66733923039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" spacingType="standard" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FNC-FQ-x2L" userLabel="Decks">
+                            <rect key="frame" x="0.0" y="175.00000000000006" width="375" height="166.66666666666669"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3R-7c-H6Q" userLabel="Stock">
+                                    <rect key="frame" x="0.0" y="0.0" width="119.66666666666667" height="166.66666666666666"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="i3R-7c-H6Q" secondAttribute="height" multiplier="572:798" id="aKJ-xR-ynB"/>
+                                    </constraints>
+                                    <state key="normal" title="Button" image="zone"/>
+                                    <connections>
+                                        <action selector="stockTapped:" destination="-1" eventType="touchUpInside" id="LQW-wl-cK6"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zkM-hH-Bdh" userLabel="Suite">
+                                    <rect key="frame" x="127.66666666666666" y="0.0" width="119.66666666666666" height="166.66666666666666"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="zkM-hH-Bdh" secondAttribute="height" multiplier="572:798" id="y2R-H2-H7v"/>
+                                    </constraints>
+                                    <state key="normal" title="Button" image="zone"/>
+                                    <connections>
+                                        <action selector="suiteTapped:" destination="-1" eventType="touchUpInside" id="OWX-3t-0Ef"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7L5-AH-n0a" userLabel="Waste">
+                                    <rect key="frame" x="255.33333333333334" y="0.0" width="119.66666666666666" height="166.66666666666666"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="7L5-AH-n0a" secondAttribute="height" multiplier="572:798" id="xf0-iD-Egj"/>
+                                    </constraints>
+                                    <state key="normal" title="Button" image="zone"/>
+                                    <connections>
+                                        <action selector="wasteTapped:" destination="-1" eventType="touchUpInside" id="sDx-eq-jfG"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="s42-xN-3aS">
+                            <rect key="frame" x="0.0" y="349.66666666666663" width="375" height="167"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XXXXX" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XPp-7T-ji8" userLabel="Active stock">
+                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="167"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                    <color key="textColor" red="0.92490960739999994" green="1" blue="0.66733923039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XXXXX" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4n-cq-htZ" userLabel="Active suite">
+                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="167"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                    <color key="textColor" red="0.92490960739999994" green="1" blue="0.66733923039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XXXXX" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="car-ua-kg5" userLabel="Active waste">
+                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="167"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                    <color key="textColor" red="0.92490960739999994" green="1" blue="0.66733923039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.97513862724842004" green="0.49803921568627452" blue="0.18431372549019609" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="0.24705882352941178" green="0.49803921568627452" blue="0.18431372549019609" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="6m2-oM-JOP" secondAttribute="bottom" id="3sj-ck-rpN"/>
+                <constraint firstItem="6m2-oM-JOP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Zuw-6g-p6L"/>
+                <constraint firstItem="6m2-oM-JOP" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="buk-9A-gAC"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="6m2-oM-JOP" secondAttribute="trailing" id="rUm-xn-u1c"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
         </view>
     </objects>
+    <resources>
+        <image name="zone" width="572" height="798"/>
+    </resources>
 </document>
