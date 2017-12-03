@@ -72,9 +72,9 @@ class Robert {
     public func selectSuite() {
         switch  activeDeck {
         case .stock:
-            moveCard(from: &stock, to: &suite)
+            moveCard(from: stock, to: suite)
         case .waste:
-            moveCard(from: &waste, to: &suite)
+            moveCard(from: waste, to: suite)
         case .none:
             break
         }
@@ -83,7 +83,7 @@ class Robert {
     public func selectWaste() {
         switch activeDeck {
         case .stock:
-            moveCard(from: &stock, to: &waste)
+            moveCard(from: stock, to: waste)
         case .waste:
             activeDeck = .none
         case .none:
@@ -107,7 +107,7 @@ class Robert {
 
     // MARK: - Private functions.
 
-    private func moveCard(from source: inout Deck, to destination: inout Deck) {
+    private func moveCard(from source: Deck, to destination: Deck) {
         activeDeck = .none
         guard source.cardCount > 0 else {
             return

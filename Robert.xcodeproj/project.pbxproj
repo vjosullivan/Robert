@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F1233F1F1EF65F0600FC2E48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233F1E1EF65F0600FC2E48 /* AppDelegate.swift */; };
-		F1233F211EF65F0600FC2E48 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233F201EF65F0600FC2E48 /* ViewController.swift */; };
-		F1233F241EF65F0600FC2E48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1233F221EF65F0600FC2E48 /* Main.storyboard */; };
+		F1233F211EF65F0600FC2E48 /* RobertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233F201EF65F0600FC2E48 /* RobertViewController.swift */; };
 		F1233F261EF65F0600FC2E48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1233F251EF65F0600FC2E48 /* Assets.xcassets */; };
 		F1233F291EF65F0600FC2E48 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1233F271EF65F0600FC2E48 /* LaunchScreen.storyboard */; };
 		F1233F401EF660BA00FC2E48 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233F3F1EF660BA00FC2E48 /* Rank.swift */; };
@@ -25,6 +24,7 @@
 		F1233F591EF6774500FC2E48 /* DeckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233F581EF6774500FC2E48 /* DeckTests.swift */; };
 		F1233F5B1EF6987200FC2E48 /* RobertDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233F5A1EF6987200FC2E48 /* RobertDelegate.swift */; };
 		F1233F5F1EF6B55200FC2E48 /* DummyRobertDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1233F5E1EF6B55200FC2E48 /* DummyRobertDelegate.swift */; };
+		F1D534091FD41B84007EF8A6 /* RobertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1D534081FD41B84007EF8A6 /* RobertViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,8 +40,7 @@
 /* Begin PBXFileReference section */
 		F1233F1B1EF65F0600FC2E48 /* Robert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Robert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1233F1E1EF65F0600FC2E48 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F1233F201EF65F0600FC2E48 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F1233F231EF65F0600FC2E48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F1233F201EF65F0600FC2E48 /* RobertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobertViewController.swift; sourceTree = "<group>"; };
 		F1233F251EF65F0600FC2E48 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F1233F281EF65F0600FC2E48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F1233F2A1EF65F0600FC2E48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -61,6 +60,7 @@
 		F1233F5A1EF6987200FC2E48 /* RobertDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobertDelegate.swift; sourceTree = "<group>"; };
 		F1233F5E1EF6B55200FC2E48 /* DummyRobertDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyRobertDelegate.swift; sourceTree = "<group>"; };
 		F15731BD1EF7D34300C20D37 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		F1D534081FD41B84007EF8A6 /* RobertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RobertViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,8 +105,8 @@
 			children = (
 				F1233F3E1EF6608B00FC2E48 /* model */,
 				F1233F1E1EF65F0600FC2E48 /* AppDelegate.swift */,
-				F1233F201EF65F0600FC2E48 /* ViewController.swift */,
-				F1233F221EF65F0600FC2E48 /* Main.storyboard */,
+				F1233F201EF65F0600FC2E48 /* RobertViewController.swift */,
+				F1D534081FD41B84007EF8A6 /* RobertViewController.xib */,
 				F1233F251EF65F0600FC2E48 /* Assets.xcassets */,
 				F1233F271EF65F0600FC2E48 /* LaunchScreen.storyboard */,
 				F1233F2A1EF65F0600FC2E48 /* Info.plist */,
@@ -234,8 +234,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1233F291EF65F0600FC2E48 /* LaunchScreen.storyboard in Resources */,
+				F1D534091FD41B84007EF8A6 /* RobertViewController.xib in Resources */,
 				F1233F261EF65F0600FC2E48 /* Assets.xcassets in Resources */,
-				F1233F241EF65F0600FC2E48 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,7 +255,7 @@
 			files = (
 				F1233F511EF6735100FC2E48 /* Deck.swift in Sources */,
 				F1233F5B1EF6987200FC2E48 /* RobertDelegate.swift in Sources */,
-				F1233F211EF65F0600FC2E48 /* ViewController.swift in Sources */,
+				F1233F211EF65F0600FC2E48 /* RobertViewController.swift in Sources */,
 				F1233F1F1EF65F0600FC2E48 /* AppDelegate.swift in Sources */,
 				F1233F571EF6755F00FC2E48 /* DeckSize.swift in Sources */,
 				F1233F491EF66D4700FC2E48 /* Card.swift in Sources */,
@@ -289,14 +289,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		F1233F221EF65F0600FC2E48 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F1233F231EF65F0600FC2E48 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		F1233F271EF65F0600FC2E48 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
