@@ -75,16 +75,16 @@ extension RobertViewController: RobertDelegate {
     func didSelect(_ deck: Robert.ActiveDeck) {
         switch deck {
         case .none:
-            activeStock.text = "n"
-            activeSuite.text = "n"
-            activeWaste.text = "n"
+            activeStock.text = "\(game.stock.cardCount)"
+            activeSuite.text = "\(game.suite.cardCount)"
+            activeWaste.text = "\(game.waste.cardCount)"
         case .stock:
             activeStock.text = "STOCK"
-            activeSuite.text = "x"
-            activeWaste.text = "x"
+            activeSuite.text = "\(game.suite.cardCount)"
+            activeWaste.text = "\(game.waste.cardCount)"
         case .waste:
-            activeStock.text = "x"
-            activeSuite.text = "x"
+            activeStock.text = "\(game.stock.cardCount)"
+            activeSuite.text = "\(game.suite.cardCount)"
             activeWaste.text = "WASTE"
         }
     }
@@ -108,8 +108,8 @@ extension RobertViewController: RobertDelegate {
         stock.setImage(UIImage(named: "\(game.stockImageName)"), for: .normal)
         suite.setImage(UIImage(named: "\(game.suiteImageName)"), for: .normal)
         waste.setImage(UIImage(named: "\(game.wasteImageName)"), for: .normal)
-        activeStock.text = "\(activeStock.text ?? "") \(game.stock.cardCount)"
-        activeSuite.text = "\(activeSuite.text ?? "") \(game.suite.cardCount)"
-        activeWaste.text = "\(activeWaste.text ?? "") \(game.waste.cardCount)"
+        activeStock.text = "\(game.stock.cardCount)"
+        activeSuite.text = "\(game.suite.cardCount)"
+        activeWaste.text = "\(game.waste.cardCount)"
     }
 }

@@ -27,7 +27,7 @@ class Deck {
         return !isEmpty
     }
 
-    private var deck = [Card]()
+    public private(set) var deck = [Card]()
 
     // MARK: - Public functions.
 
@@ -66,6 +66,18 @@ class Deck {
 
     public var topCard: Card? {
         return deck.first
+    }
+
+
+    /// Turns over and adds the give set of cards to the bottom of this deck.
+    /// So, if this deck contains top[1C, 2D, 3H]bottom and top[4S, 5C, 6H]bottom is
+    /// added to the bottom then the result will be top[1C, 2D, 3H, 6H, 5C, 4S]bottom.
+    /// Adding cards in this way to an empty deck inverts the cards.
+    ///
+    /// - Parameter cards: The cards to be added.
+    ///
+    public func addToBottom(cards: [Card]) {
+        deck.append(contentsOf: cards.reversed())
     }
 
     // MARK: - Private functions.

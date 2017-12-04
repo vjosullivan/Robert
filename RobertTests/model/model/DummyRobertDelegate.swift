@@ -10,6 +10,10 @@ import Foundation
 @testable import Robert
 
 class DummyRobertDelegate: RobertDelegate {
+    func didMoveCards() {
+        // TODO: 
+    }
+
     public private(set) var activeDeck = Robert.ActiveDeck.none
     public private(set) var changeCount = 0
     public private(set) var gameCount = 0

@@ -83,10 +83,13 @@ class Robert {
     }
 
     public func selectStock() {
-        if gameState == .firstDealPlayedOut {
+        switch gameState {
+        case .firstDealPlayedOut:
             redeal()
             activeDeck = .none
-        } else {
+        case .gameWon, .gameLost:
+            newGame()
+        default:
             switch activeDeck {
             case .stock:
                 activeDeck = .none
@@ -182,7 +185,7 @@ class Robert {
         guard gameState == .firstDealPlayedOut else {
             return
         }
-        stock = waste
+        stock.addToBottom(cards: waste.deck)
         waste = Deck(.empty)
         gameState = .secondDeal
         delegate?.didChangeState(to: gameState)
