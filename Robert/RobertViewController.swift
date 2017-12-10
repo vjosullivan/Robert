@@ -91,12 +91,16 @@ extension RobertViewController: RobertDelegate {
 
     func didChangeState(to gameState: Robert.GameState) {
         switch gameState {
-        case .firstDeal:
-            self.gameState.text = "First Deal"
-        case .firstDealPlayedOut:
-            self.gameState.text = "First Deal Played Out"
-        case .secondDeal:
-            self.gameState.text = "Second Deal"
+        case .firstRound:
+            self.gameState.text = "First Round"
+        case .firstRoundCompleted:
+            self.gameState.text = "First Round Completed"
+        case .secondRound:
+            self.gameState.text = "Second Round"
+        case .secondRoundCompleted:
+            self.gameState.text = "Second Round Completed"
+        case .finalRound:
+            self.gameState.text = "Final Round"
         case .gameLost:
             self.gameState.text = "Game Lost"
         case .gameWon:

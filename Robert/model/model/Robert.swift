@@ -24,9 +24,10 @@ class Robert {
         if let card = stock.topCard {
             return card.imageName
         } else {
-            if gameState == .firstDealPlayedOut {
+            switch gameState {
+            case .firstRoundCompleted, .secondRoundCompleted:
                 return "zone_circle"
-            } else {
+            default:
                 return "zone_cross"
             }
         }
@@ -48,12 +49,24 @@ class Robert {
         }
     }
 
+    public var stockPlayable: Bool {
+        return stock.cardCount > 0
+    }
+
+    public var wastePlayable: Bool {
+        guard let card = waste.topCard else { return false }
+
+        return card.differenceInRank(to: suite.topCard!) == 1
+    }
+
     public var delegate: RobertDelegate?
 
     public enum GameState {
-        case firstDeal
-        case firstDealPlayedOut
-        case secondDeal
+        case firstRound
+        case firstRoundCompleted
+        case secondRound
+        case secondRoundCompleted
+        case finalRound
         case gameLost
         case gameWon
     }
@@ -71,7 +84,7 @@ class Robert {
     }
 
     public func newGame() {
-        gameState = .firstDeal
+        gameState = .firstRound
 
         stock = Deck(.full)
         suite = Deck(.empty)
@@ -84,7 +97,7 @@ class Robert {
 
     public func selectStock() {
         switch gameState {
-        case .firstDealPlayedOut:
+        case .firstRoundCompleted, .secondRoundCompleted:
             redeal()
             activeDeck = .none
         case .gameWon, .gameLost:
@@ -125,7 +138,7 @@ class Robert {
 
     // MARK: - Private constants and properties
 
-    private var gameState = GameState.firstDeal {
+    private var gameState = GameState.firstRound {
         didSet {
             delegate?.didChangeState(to: gameState)
         }
@@ -160,12 +173,16 @@ class Robert {
         if stock.containsCards { return }
 
         switch gameState {
-        case .firstDeal:
-            gameState = .firstDealPlayedOut
-        case .secondDeal:
+        case .firstRound:
+            gameState = .firstRoundCompleted
+        case .secondRound:
+            gameState = .secondRoundCompleted
+        case .finalRound:
             if waste.isEmpty {
                 gameState = .gameWon
-            } else if !topWasteCardIsPlayable() {
+            } else if wastePlayable {
+                return
+            } else {
                 gameState = .gameLost
             }
         default:
@@ -174,20 +191,14 @@ class Robert {
         delegate?.didChangeState(to: gameState)
     }
 
-    private func topWasteCardIsPlayable() -> Bool {
-        guard let wasteCard = waste.topCard else {
-            return false
-        }
-        return wasteCard.differenceInRank(to: suite.topCard!) == 1
-    }
-
     private func redeal() {
-        guard gameState == .firstDealPlayedOut else {
-            return
+        guard gameState == .firstRoundCompleted ||
+            gameState == .secondRoundCompleted else {
+                return
         }
         stock.addToBottom(cards: waste.deck)
         waste = Deck(.empty)
-        gameState = .secondDeal
+        gameState = (gameState == .firstRoundCompleted) ? .secondRound : .finalRound
         delegate?.didChangeState(to: gameState)
         delegate?.didMoveCards()
     }
