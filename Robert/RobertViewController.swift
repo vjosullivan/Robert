@@ -16,9 +16,12 @@ class RobertViewController: UIViewController {
 
     // MARK: - Outlets.
 
-    @IBOutlet weak var stock: UIButton!
-    @IBOutlet weak var suite: UIButton!
-    @IBOutlet weak var waste: UIButton!
+    @IBOutlet weak var stockPlayability: UILabel!
+    @IBOutlet weak var wastePlayability: UILabel!
+    
+    @IBOutlet weak var stock: UIImageView!
+    @IBOutlet weak var suite: UIImageView!
+    @IBOutlet weak var waste: UIImageView!
 
     @IBOutlet weak var activeStock: UILabel!
     @IBOutlet weak var activeSuite: UILabel!
@@ -109,11 +112,25 @@ extension RobertViewController: RobertDelegate {
     }
 
     func didMoveCards() {
-        stock.setImage(UIImage(named: "\(game.stockImageName)"), for: .normal)
-        suite.setImage(UIImage(named: "\(game.suiteImageName)"), for: .normal)
-        waste.setImage(UIImage(named: "\(game.wasteImageName)"), for: .normal)
+        stock.image = UIImage(named: "\(game.stockImageName)")
+        suite.image = UIImage(named: "\(game.suiteImageName)")
+        waste.image = UIImage(named: "\(game.wasteImageName)")
         activeStock.text = "\(game.stock.cardCount)"
         activeSuite.text = "\(game.suite.cardCount)"
         activeWaste.text = "\(game.waste.cardCount)"
+        if game.stockPlayable {
+            stockPlayability.text = "✓"
+            stockPlayability.textColor = UIColor.yellow
+        } else {
+            stockPlayability.text = "✗"
+            stockPlayability.textColor = UIColor.red
+        }
+        if game.wastePlayable {
+            wastePlayability.text = "✓"
+            wastePlayability.textColor = UIColor.yellow
+        } else {
+            wastePlayability.text = "✗"
+            wastePlayability.textColor = UIColor.red
+        }
     }
 }
