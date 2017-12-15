@@ -10,24 +10,25 @@ import Foundation
 @testable import Robert
 
 class DummyRobertDelegate: RobertDelegate {
-    func didMoveCards() {
+
+    func robertDidMoveCards(_ robert: Robert) {
         // TODO: 
     }
 
-    public private(set) var activeDeck = Robert.ActiveDeck.none
+    public private(set) var activeDeck = Robert.SelectedDeck.none
     public private(set) var changeCount = 0
     public private(set) var gameCount = 0
 
-    func didStartNewGame() {
+    func robertDidStart(_ robert: Robert) {
         gameCount += 1
     }
 
-    func didSelect(_ deck: Robert.ActiveDeck) {
+    func robert(_ robert: Robert, didSelectDeck deck: Robert.SelectedDeck) {
         activeDeck = deck
         changeCount += 1
     }
 
-    func didChangeState(to gameState: Robert.GameState) {
+    func robert(_ robert: Robert, didChangeState state: Robert.State) {
         // TODO:
     }
 }

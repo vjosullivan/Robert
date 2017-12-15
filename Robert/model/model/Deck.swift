@@ -40,6 +40,10 @@ class Deck {
         }
     }
 
+    init (cards: [Card]) {
+        deck = cards
+    }
+
     private func fullDeck() -> [Card] {
         var cards = [Card]()
         // Suits and ranks are added in reverse order, so that final deck
@@ -69,15 +73,14 @@ class Deck {
     }
 
 
-    /// Turns over and adds the give set of cards to the bottom of this deck.
+    /// Adds the given set of cards to the bottom of this deck.
     /// So, if this deck contains top[1C, 2D, 3H]bottom and top[4S, 5C, 6H]bottom is
-    /// added to the bottom then the result will be top[1C, 2D, 3H, 6H, 5C, 4S]bottom.
-    /// Adding cards in this way to an empty deck inverts the cards.
+    /// added to the bottom then the result will be top[1C, 2D, 3H, 4S, 5C, 6H]bottom.
     ///
     /// - Parameter cards: The cards to be added.
     ///
     public func addToBottom(cards: [Card]) {
-        deck.append(contentsOf: cards.reversed())
+        deck.append(contentsOf: cards)
     }
 
     // MARK: - Private functions.

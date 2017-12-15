@@ -12,21 +12,21 @@ protocol RobertDelegate {
 
     /// Called when a new game is started.
     ///
-    func didStartNewGame()
+    func robertDidStart(_ robert: Robert)
 
     /// Called whenever the user selects a (new?) deck.
     ///
     /// - Parameter deck: The selected deck.
     ///
-    func didSelect(_ deck: Robert.ActiveDeck)
+    func robert(_ robert: Robert, didSelectDeck deck: Robert.SelectedDeck)
 
     /// Called whenever the game state changes.
     ///
     /// - Parameter gameState: The new game state.
     ///
-    func didChangeState(to gameState: Robert.GameState)
+    func robert(_ robert: Robert, didChangeState state: Robert.State)
 
     /// Called whenever the game moves cards.
     ///
-    func didMoveCards()
+    func robertDidMoveCards(_ robert: Robert)
 }

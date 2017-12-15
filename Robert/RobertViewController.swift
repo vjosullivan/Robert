@@ -12,7 +12,7 @@ class RobertViewController: UIViewController {
 
     // MARK: - Local constants and variables.
 
-    private let game: Robert
+    private let robert: Robert
 
     // MARK: - Outlets.
 
@@ -31,10 +31,10 @@ class RobertViewController: UIViewController {
 
     // MARK: - Initializers.
 
-    init(game: Robert) {
-        self.game     = game
+    init(robert: Robert) {
+        self.robert = robert
         super.init(nibName: nil, bundle: nil)
-        game.delegate = self
+        self.robert.delegate = self
     }
 
     required init?(coder aDecoder: NSCoder) { fatalError("RobertViewControler: init(coder) not implemented.") }
@@ -44,7 +44,7 @@ class RobertViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        game.newGame()
+        robert.newGame()
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,44 +56,45 @@ class RobertViewController: UIViewController {
 
     @IBAction func stockTapped(_ sender: UIButton) {
         print("UI stock tapped.")
-        game.selectStock()
+        robert.selectStock()
     }
 
     @IBAction func suiteTapped(_ sender: UIButton) {
         print("UI suite tapped.")
-        game.selectSuite()
+        robert.selectSuite()
     }
 
     @IBAction func wasteTapped(_ sender: UIButton) {
         print("UI waste tapped.")
-        game.selectWaste()
+        robert.selectWaste()
     }
 }
 
 extension RobertViewController: RobertDelegate {
-    func didStartNewGame() {
+
+    func robertDidStart(_ robert: Robert) {
         // TODO: Update any new game indicators.
     }
 
-    func didSelect(_ deck: Robert.ActiveDeck) {
+    func robert(_ robert: Robert, didSelectDeck deck: Robert.SelectedDeck) {
         switch deck {
         case .none:
-            activeStock.text = "\(game.stock.cardCount)"
-            activeSuite.text = "\(game.suite.cardCount)"
-            activeWaste.text = "\(game.waste.cardCount)"
+            activeStock.text = "\(robert.stock.cardCount)"
+            activeSuite.text = "\(robert.suite.cardCount)"
+            activeWaste.text = "\(robert.waste.cardCount)"
         case .stock:
-            activeStock.text = "STOCK"
-            activeSuite.text = "\(game.suite.cardCount)"
-            activeWaste.text = "\(game.waste.cardCount)"
+            activeStock.text = "<<< \(robert.stock.cardCount) >>>"
+            activeSuite.text = "\(robert.suite.cardCount)"
+            activeWaste.text = "\(robert.waste.cardCount)"
         case .waste:
-            activeStock.text = "\(game.stock.cardCount)"
-            activeSuite.text = "\(game.suite.cardCount)"
-            activeWaste.text = "WASTE"
+            activeStock.text = "\(robert.stock.cardCount)"
+            activeSuite.text = "\(robert.suite.cardCount)"
+            activeWaste.text = "<<< \(robert.waste.cardCount) >>>"
         }
     }
 
-    func didChangeState(to gameState: Robert.GameState) {
-        switch gameState {
+    func robert(_ robert: Robert, didChangeState state: Robert.State) {
+        switch state {
         case .firstRound:
             self.gameState.text = "First Round"
         case .firstRoundCompleted:
@@ -111,21 +112,21 @@ extension RobertViewController: RobertDelegate {
         }
     }
 
-    func didMoveCards() {
-        stock.image = UIImage(named: "\(game.stockImageName)")
-        suite.image = UIImage(named: "\(game.suiteImageName)")
-        waste.image = UIImage(named: "\(game.wasteImageName)")
-        activeStock.text = "\(game.stock.cardCount)"
-        activeSuite.text = "\(game.suite.cardCount)"
-        activeWaste.text = "\(game.waste.cardCount)"
-        if game.stockPlayable {
+    func robertDidMoveCards(_ robert: Robert) {
+        stock.image = UIImage(named: "\(robert.stockImageName)")
+        suite.image = UIImage(named: "\(robert.suiteImageName)")
+        waste.image = UIImage(named: "\(robert.wasteImageName)")
+        activeStock.text = "\(robert.stock.cardCount)"
+        activeSuite.text = "\(robert.suite.cardCount)"
+        activeWaste.text = "\(robert.waste.cardCount)"
+        if robert.stockPlayable {
             stockPlayability.text = "✓"
             stockPlayability.textColor = UIColor.yellow
         } else {
             stockPlayability.text = "✗"
             stockPlayability.textColor = UIColor.red
         }
-        if game.wastePlayable {
+        if robert.wastePlayable {
             wastePlayability.text = "✓"
             wastePlayability.textColor = UIColor.yellow
         } else {

@@ -17,14 +17,13 @@ class Robert {
     public private(set) var waste: Deck = Deck(.empty)
 
     public var stockEnabled: Bool { return stock.cardCount > 0 }
-    public var suiteEnabled: Bool { return suite.cardCount > 0 }
     public var wasteEnabled: Bool { return waste.cardCount > 0 }
 
     public var stockImageName: String {
         if let card = stock.topCard {
             return card.imageName
         } else {
-            switch gameState {
+            switch robertState {
             case .firstRoundCompleted, .secondRoundCompleted:
                 return "zone_circle"
             default:
@@ -34,23 +33,18 @@ class Robert {
     }
 
     public var suiteImageName: String {
-        if let card = suite.topCard {
-            return card.imageName
-        } else {
-            return "zone"
-        }
+        // The suite always contains at least one card.
+        return suite.topCard!.imageName
     }
 
     public var wasteImageName: String {
-        if let card = waste.topCard {
-            return card.imageName
-        } else {
-            return "zone"
-        }
+        return waste.topCard?.imageName ?? "zone"
     }
 
     public var stockPlayable: Bool {
-        return stock.cardCount > 0
+        guard let card = stock.topCard else { return false }
+
+        return card.differenceInRank(to: suite.topCard!) == 1
     }
 
     public var wastePlayable: Bool {
@@ -61,7 +55,7 @@ class Robert {
 
     public var delegate: RobertDelegate?
 
-    public enum GameState {
+    public enum State {
         case firstRound
         case firstRoundCompleted
         case secondRound
@@ -71,7 +65,7 @@ class Robert {
         case gameWon
     }
 
-    enum ActiveDeck {
+    enum SelectedDeck {
         case none
         case stock
         case waste
@@ -83,39 +77,35 @@ class Robert {
         newGame()
     }
 
+    init(deck: Deck) {
+        newGame(deck: deck)
+    }
+
     public func newGame() {
-        gameState = .firstRound
-
-        stock = Deck(.full)
-        suite = Deck(.empty)
-        waste = Deck(.empty)
-
-        suite.addToTop(stock.removeTopCard())
-        delegate?.didStartNewGame()
-        delegate?.didMoveCards()
+        newGame(deck: Deck(.full))
     }
 
     public func selectStock() {
-        switch gameState {
+        switch robertState {
         case .firstRoundCompleted, .secondRoundCompleted:
             redeal()
-            activeDeck = .none
+            selectedDeck = .none
         case .gameWon, .gameLost:
             newGame()
         default:
-            switch activeDeck {
+            switch selectedDeck {
             case .stock:
-                activeDeck = .none
+                selectedDeck = .none
             case .waste:
-                activeDeck = .none
+                selectedDeck = .none
             case .none:
-                activeDeck = .stock
+                selectedDeck = .stock
             }
         }
     }
 
     public func selectSuite() {
-        switch  activeDeck {
+        switch selectedDeck {
         case .stock:
             moveCard(from: stock, to: suite)
         case .waste:
@@ -126,34 +116,46 @@ class Robert {
     }
 
     public func selectWaste() {
-        switch activeDeck {
+        switch selectedDeck {
         case .stock:
             moveCard(from: stock, to: waste)
         case .waste:
-            activeDeck = .none
+            selectedDeck = .none
         case .none:
-            activeDeck = .waste
+            selectedDeck = .waste
         }
     }
 
     // MARK: - Private constants and properties
 
-    private var gameState = GameState.firstRound {
+    private var robertState = State.firstRound {
         didSet {
-            delegate?.didChangeState(to: gameState)
+            delegate?.robert(self, didChangeState: robertState)
         }
     }
 
-    private var activeDeck = ActiveDeck.none {
+    private var selectedDeck = SelectedDeck.none {
         didSet {
-            delegate?.didSelect(activeDeck)
+            delegate?.robert(self, didSelectDeck: selectedDeck)
         }
     }
 
     // MARK: - Private functions.
 
+    private func newGame(deck: Deck) {
+        robertState = .firstRound
+
+        stock = deck
+        suite = Deck(.empty)
+        waste = Deck(.empty)
+
+        suite.addToTop(stock.removeTopCard())
+        delegate?.robertDidStart(self)
+        delegate?.robertDidMoveCards(self)
+    }
+
     private func moveCard(from source: Deck, to destination: Deck) {
-        activeDeck = .none
+        selectedDeck = .none
         guard source.cardCount > 0 else {
             return
         }
@@ -165,42 +167,43 @@ class Robert {
         }
         destination.addToTop(source.removeTopCard())
         updateGameState()
-        delegate?.didMoveCards()
+        delegate?.robertDidMoveCards(self)
         print(stock.cardCount, suite.cardCount, waste.cardCount)
     }
 
     private func updateGameState() {
         if stock.containsCards { return }
 
-        switch gameState {
+        switch robertState {
         case .firstRound:
-            gameState = .firstRoundCompleted
+            robertState = .firstRoundCompleted
         case .secondRound:
-            gameState = .secondRoundCompleted
+            robertState = .secondRoundCompleted
         case .finalRound:
             if waste.isEmpty {
-                gameState = .gameWon
+                robertState = .gameWon
             } else if wastePlayable {
                 return
             } else {
-                gameState = .gameLost
+                robertState = .gameLost
             }
         default:
             break
         }
-        delegate?.didChangeState(to: gameState)
+        delegate?.robert(self, didChangeState: robertState)
     }
 
     private func redeal() {
-        guard gameState == .firstRoundCompleted ||
-            gameState == .secondRoundCompleted else {
+        guard robertState == .firstRoundCompleted ||
+            robertState == .secondRoundCompleted else {
                 return
         }
-        stock.addToBottom(cards: waste.deck)
+        // Invert the waste deck before moving it to the stock.
+        stock.addToBottom(cards: waste.deck.reversed())
         waste = Deck(.empty)
-        gameState = (gameState == .firstRoundCompleted) ? .secondRound : .finalRound
-        delegate?.didChangeState(to: gameState)
-        delegate?.didMoveCards()
+        robertState = (robertState == .firstRoundCompleted) ? .secondRound : .finalRound
+        delegate?.robert(self, didChangeState: robertState)
+        delegate?.robertDidMoveCards(self)
     }
 }
 
